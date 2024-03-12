@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS</title>
+
+    <link rel="stylesheet" th:href="@{../css/login.css}"> <!-- Adjusted the path -->
+</head>
+<body>
+<div class="wrapper">
+    <div class="title">
+        Admin Registration Form
+    </div>
+    <form th:action="@{/registration}" method="post" role="form" th:object="${user}">
+        <div class="field">
+            <input th:field="*{name}" type="text" id="name" name="name" required>
+            <label>Name</label>
+        </div>
+
+        <div class="field">
+            <input th:field="*{email}" type="email" id="email" name="email" required>
+            <label>Email Address</label>
+        </div>
+
+        <div class="field">
+            <input th:field="*{password}" type="password" id="password" name="password" required>
+            <label>Password</label>
+        </div>
+
+        <div class="field"> <!-- Corrected class name -->
+            <select name="roles" id="roles" th:field="*{roles}" >
+                <option th:field="*{roles}" value="">Select a Role </option>
+                <option th:field="*{roles}" value="ADMIN">Admin </option>
+            </select>
+        </div>
+
+
+        <div class="field">
+            <input type="submit" value="Register">
+        </div>
+        <div class="signup-link">
+            <a href="/login">Sign In</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

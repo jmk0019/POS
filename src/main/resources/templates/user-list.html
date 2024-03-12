@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .enable-button, .disable-button {
+            padding: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            border: none;
+            outline: none;
+        }
+
+        .enable-button {
+            color: #28a745;
+        }
+
+        .disable-button {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+<h2>User List</h2>
+
+<!-- ... (your existing code) ... -->
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.roles}"></td>
+        <td>
+            <span th:if="${user.status}" class="enable-button">Active</span>
+            <span th:unless="${user.status}" class="disable-button">Inactive</span>
+        </td>
+        <td>
+            <form th:action="@{/admin/toggleUserStatus}" method="post">
+                <input type="hidden" name="userId" th:value="${user.id}" />
+                <button type="submit" th:if="${user.status}" class="disable-button">Disable</button>
+                <button type="submit" th:unless="${user.status}" class="enable-button">Enable</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- ... (your existing code) ... -->
+
+
+</body>
+</html>

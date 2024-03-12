@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Add your head content here -->
+</head>
+<body>
+<div id="header">
+    <!-- Add your header content here -->
+</div>
+
+<div id="sidebar">
+    <!-- Add your sidebar content and navigation here -->
+</div>
+
+<div id="main-content">
+    <div class="profile-details">
+        <img src="https://as2.ftcdn.net/v2/jpg/02/02/60/99/1000_F_202609972_LzxAtp2czOpFxkarMLdLNMYB1ZiEM0hY.jpg" alt="">
+        <!-- Replace session.getAttribute('USERNAME_ADMIN') with #authentication.name -->
+        <p>Welcome, <span th:text="${#authentication.name}">Guest</span>!</p>
+
+        <i class='bx bx-chevron-down'></i>
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+    <!-- Add main content, tables, charts, etc. here -->
+    <table>
+        <!-- Thymeleaf iteration example -->
+        <tr th:each="item : ${inventoryList}">
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.quantity}"></td>
+            <!-- Add more columns as needed -->
+        </tr>
+    </table>
+</div>
+
+<div id="footer">
+    <!-- Add your footer content here -->
+</div>
+
+<!-- Add your JavaScript scripts here -->
+</body>
+</html>

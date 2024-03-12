@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS</title>
+    <link rel="stylesheet" th:href="@{../css/staff.css}"> <!-- Adjusted the path -->
+
+</head>
+<body>
+<div class="wrapper">
+    <h2>Registration</h2>
+    <form th:action="@{/StaffRegistration}" method="post" role="form" th:object="${user}">
+        <div class="input-box">
+            <input th:field="*{name}" type="text" placeholder="Enter your Name" required>
+        </div>
+
+        <div class="input-box">
+            <input th:field="*{email}" type="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="input-box">
+            <input th:field="*{password}" type="password" placeholder="Create password" required>
+        </div>
+
+        <div class="input-box">
+            <select name="roles" id="role" th:field="*{roles}" >
+                <option th:field="*{roles}" value="">Select a Role </option>
+
+                <option th:field="*{roles}" value="INVENTORY_STAFF">Inventory Staff</option>
+                <option th:field="*{roles}" value="CASHIER">Cashier</option>
+            </select>
+        </div>
+
+        <div class="policy">
+            <input type="checkbox">
+            <h3>I accept all terms & condition</h3>
+        </div>
+
+        <div class="input-box button">
+            <input type="submit" value="Register Now">
+        </div>
+
+        <div class="text">
+            <h3>Already have an account? <a href="/login">Login now</a></h3>
+        </div>
+    </form>
+</div>
+</body>
+</html>

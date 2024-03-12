@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Add your head content here -->
+</head>
+<body>
+<div class="sidebar">
+    <!-- Add your sidebar content here -->
+</div>
+
+<section class="home-section">
+    <nav>
+        <!-- Add your navigation content here -->
+    </nav>
+
+    <div class="home-content">
+        <div class="overview-boxes">
+            <!-- Add your overview boxes content here -->
+        </div>
+
+        <div class="sales-boxes">
+            <!-- Add your sales boxes content here -->
+        </div>
+    </div>
+
+    <div class="profile-details">
+        <img src="https://as2.ftcdn.net/v2/jpg/02/02/60/99/1000_F_202609972_LzxAtp2czOpFxkarMLdLNMYB1ZiEM0hY.jpg" alt="">
+        <p>Welcome, <span th:text="${#authentication.name}">Guest</span>!</p>
+
+        <!-- Add the updated logout link -->
+        <a href="#" onclick="logout()">Logout</a>
+
+        <i class='bx bx-chevron-down'></i>
+    </div>
+</section>
+
+<script>
+    function logout() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/logout", true);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                window.location.href = '/home';
+            }
+        };
+
+        xhr.send();
+    }
+</script>
+</body>
+</html>
